@@ -83,7 +83,7 @@ public class Dao {
 				dto = new Dto();//dtoにインスタンス化したものを与え、メッセージｄｔoのインスタンス化をしている
 				dto.setId(rs.getInt("id"));//id列の値を取得
 				dto.setusername(rs.getString("username"));
-				dto.setImagename(rs.getString("imgname"));
+				dto.setImgname(rs.getString("imgname"));
 			}
 		}finally {
 			ps.close();
@@ -106,7 +106,7 @@ public class Dao {
 				dto = new Dto();//dtoにインスタンス化したものを与え、メッセージｄｔoのインスタンス化をしている
 				dto.setId(rs.getInt("id"));//id列の値を取得
 				dto.setusername(rs.getString("username"));
-				dto.setImagename(rs.getString("imgname"));//content列の文をストリング型として受け取る
+				dto.setImgname(rs.getString("imgname"));//content列の文をストリング型として受け取る
 				list.add(dto);
 			}
 			rs.close();//SQL自体必要がなくなったためリソースを開放する

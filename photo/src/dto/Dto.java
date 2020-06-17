@@ -21,17 +21,17 @@ public class Dto { //MessageDtoが一行分のデータを持っている
 	/**
 	 * 投稿内容
 	 */
-	String imagename;
+	String imgname;
 	
 
 
 	
-	public String getImagename() {
-		return imagename;
+	public String getImgname() {
+		return imgname;
 	}
 
-	public void setImagename(String imagename) {
-		this.imagename = imagename;
+	public void setImgname(String imgname) {
+		this.imgname = imgname;
 	}
 
 	public int getId() {

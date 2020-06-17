@@ -11,11 +11,12 @@
 <body>
 	<div>
 		<p>CREATE FINISH PAGE</p>
-		<form action="Post" method="post">			
+		<form action="Backhome" method="post">			
 			
 					<p>${username}さん</p>
 					<img src=${imgname}.jpg width=400 height=auto>
-			
+					<br>
+			<input class="submit" type="submit" name="button" value="home">
 		</form>
 	</div>
 </body>

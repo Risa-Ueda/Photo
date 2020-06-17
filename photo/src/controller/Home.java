@@ -40,9 +40,9 @@ public class Home extends HttpServlet {
 				RequestDispatcher dis = context.getRequestDispatcher("/like.jsp");//imagepost以外だったらlike.jspに飛ばす
 				dis.forward(request, response);
 			} else {
-				request.setAttribute("message", "!ページを選択してください");
+				//request.setAttribute("message", "!ページを選択してください");
 				ServletContext context = getServletContext();
-				RequestDispatcher dis = context.getRequestDispatcher("/home.jsp");//imagepost以外だったらlike.jspに飛ばす
+				RequestDispatcher dis = context.getRequestDispatcher("/login.jsp");//imagepost以外だったらlike.jspに飛ばす
 				dis.forward(request, response);
 			}
 	}

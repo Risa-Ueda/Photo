@@ -15,10 +15,10 @@
 		<form action="Home" method="post">
 		<p>${message}</p>
 		
-		<c:if test="${list !=null}">
-			<c:forEach var="i" items="${list}">
-						<div class="username">@hello_world-${username}</div>
-						<div class="imgname">${imgname}.jpg</div>	
+		<c:if test="${post !=null}">
+			<c:forEach var="i" items="${post}">
+						<div class="username">${i.username}</div>
+						<div class="imgname"><img src=${i.imgname}.jpg width=400 height=auto></div>	
 					
 			</c:forEach>
 		</c:if>
@@ -28,5 +28,6 @@
 		<input class="submit" type="submit" name="button" value="like">
 		<input class="submit" type="submit" name="button" value="return">
 		</form>
+	</div>
 </body>
 </html>
