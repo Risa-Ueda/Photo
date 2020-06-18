@@ -9,23 +9,29 @@ package dto;
  * @author user
  *
  */
-public class Dto { //MessageDtoが一行分のデータを持っている
+public class Dto { //Dtoが一行分のデータを持っている
 	
 	/**
 	 * 投稿ID
 	 */
-	int id;
+	int id;//idのゲッターとセッター
 	
-	String username;
+	String username;//usernameのゲッターとセッター
 	
-	/**
-	 * 投稿内容
-	 */
-	String imgname;
 	
-
+	String imgname;//imgnameのゲッターとセッター
+	
+	String comment;
 
 	
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
 	public String getImgname() {
 		return imgname;
 	}
@@ -49,6 +55,9 @@ public class Dto { //MessageDtoが一行分のデータを持っている
 	public void setusername(String username) {
 		this.username = username;
 	}
+
+	
+	
 	
 	
 }

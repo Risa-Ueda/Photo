@@ -4,29 +4,12 @@ div {
 	/*width: 31%;*/    /* 横幅を割合で指定 */
     /*height: auto;*/
     
-    
+    text-align: center;
+    letter-spacing: 3px;
     color: #710038;
 }
 
-.top {
-	text-align: center;
-    letter-spacing: 3px;
-}
 
-.username {
-	text-align: center;
-	float: left;
-}
-
-.imgname {
-	/*text-align: center;
-	float: left;*/
-}
-
-.comment {
-	float: center;
-	text-align: left;
-}
 
 .submit {
   display       : inline-block;

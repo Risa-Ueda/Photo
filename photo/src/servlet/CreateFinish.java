@@ -49,6 +49,14 @@ public class CreateFinish extends HttpServlet {
 		if(dto != null) {//一致したら
 			request.setAttribute("username", username);//usernameをusernameにセット
 			request.setAttribute("imgname", imagename);//imagenameをimagenameにセット
+			Insert dbAccess = new Insert();
+			try {
+				dbAccess.execute(request);
+			} catch (SQLException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
+			System.out.println("posted!");
 			
 		}else if(username == null || username.isEmpty() || imagename == null || imagename.isEmpty()) {
 			request.setAttribute("message", "!ユーザ名、imagenameを入力してください");//!ユーザ名、imagenameを入力してくださいとメッセージを表示

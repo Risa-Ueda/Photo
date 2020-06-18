@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <title>IMAGE</title>
-<link rel="stylesheet" href="home.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<div>

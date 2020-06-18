@@ -37,16 +37,17 @@ public class Dao {
 		}
 	}
 	public boolean getLoginInfo(String name, String pass) throws SQLException{
+		//ログイン時にDBからユーザー名とパスワードを一致させるメソッド
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		boolean success;
-		sql = "SELECT * from user where username = ? and password = ?";
-		ps = con.prepareStatement(sql);
-		ps.setString(1, name);
-		ps.setString(2, pass);
+		sql = "SELECT * from user where username = ? and password = ?";//SQL文
+		ps = con.prepareStatement(sql);//SQL文を用意
+		ps.setString(1, name);//nameの値をセット
+		ps.setString(2, pass);//passの値をセット
 		try {
-			rs = ps.executeQuery();
-			success = rs.next();
+			rs = ps.executeQuery();//結果をrsに代入
+			success = rs.next();//結果をlogin.javaに受け渡し
 		}finally {
 			ps.close();
 		}
@@ -54,6 +55,7 @@ public class Dao {
 	}
 	
 	public boolean getImagename(String imagename) throws SQLException{
+		//Image.javaで画像名と一致させるメソッド
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		boolean success;
@@ -70,6 +72,7 @@ public class Dao {
 	}
 	
 	public Dto getPost(String username, String imgname) throws SQLException{
+		//createページでユーザー名と画像ファイル名を一致させるメソッド
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		Dto dto = null;
@@ -106,16 +109,34 @@ public class Dao {
 				dto = new Dto();//dtoにインスタンス化したものを与え、メッセージｄｔoのインスタンス化をしている
 				dto.setId(rs.getInt("id"));//id列の値を取得
 				dto.setusername(rs.getString("username"));
-				dto.setImgname(rs.getString("imgname"));//content列の文をストリング型として受け取る
+				dto.setImgname(rs.getString("imgname"));
+				dto.setComment(rs.getString("comment"));//content列の文をストリング型として受け取る
 				list.add(dto);
 			}
 			rs.close();//SQL自体必要がなくなったためリソースを開放する
 		}finally {//どの
 			ps.close();//SQL自体必要がなくなったためリソースを開放する
 		}
-		Comparator<Dto> comparator = Comparator.comparing(Dto::getId).reversed();
+		Comparator<Dto> comparator = Comparator.comparing(Dto::getId).reversed();//Idの数字で比較して並べ替えをする
 		
 		return (ArrayList<Dto>) list.stream().sorted(comparator).collect(Collectors.toList());	
+	}
+	
+	public int insertData(String username, String imgname, String comment) throws SQLException{//取得したデータの登録するためのメソッド/String inputはユーザーが打ち込んだ内容/int型として戻ってくる
+		PreparedStatement ps = null;//psSQLをどのデータベースにどのようなクエリを送るのか定義
+		int n = 0;//トライブロックの中にいると戻り値として認識されない
+		try {
+			String sql = "INSERT INTO post (username, imgname)VALUES (?, ?, ?)";//?はユーザーが打ち込んだ値
+			ps = con.prepareStatement(sql);
+			ps.setString(1, username);//
+			ps.setString(2, imgname);
+			ps.setString(3, comment);
+			n = ps.executeUpdate();//sqlの実行文
+	}finally {
+		ps.close();
+	}
+	// ここに処理を記入してください
+	return n;//コード認証が成功した数を返す戻り式
 	}
 	
 }

@@ -19,13 +19,7 @@ import dto.Dto;
 @WebServlet("/Login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Login() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -51,13 +45,13 @@ public class Login extends HttpServlet {
 		boolean success = false;
 		String name = request.getParameter("name");//Daoからnameを取得
 		String pass = request.getParameter("pass");//Daoからpassを取得
-		ArrayList<Dto> postimage = null;
+		ArrayList<Dto> postimage = null;//ArrayList<Dto>をpostimageという名の変数を定義
 		
 		try {
 			dao = new Dao();
 			success = dao.getLoginInfo(name, pass);//successsの変数にnameとpassの値を代入、getLogininfoで取得
-			postimage = dao.getListAll();
-			request.setAttribute("post", postimage);
+			postimage = dao.getListAll();//daoのgetListAllのメソッドをpostimageに代入(全部の投稿を抽出)			
+			request.setAttribute("post", postimage);//postという文字列をpostimageという名前で保存
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}	
