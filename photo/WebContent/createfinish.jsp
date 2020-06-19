@@ -15,8 +15,10 @@
 					<p>UserName</p>
 					<p>${username}</p>
 					<p>Posted Image</p>
-					<img src=${imgname}.jpg width=400 height=auto>
+					<img src=${imgname} width=400 height=auto>
 					<br>
+					<p>Comment</p>
+					<p>${comment}</p>
 			<input class="submit" type="submit" name="button" value="home">
 		</form>
 	</div>

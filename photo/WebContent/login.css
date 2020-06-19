@@ -1,20 +1,29 @@
-
 @charset "UTF-8";
 
-h1 {
-	text-align: center;
-	/*color: gray;*/
+body {
+	background-image: url("glass.jpg");
+	margin: 0 auto;
+	background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+	height:100%;
 }
 
 div {
-	text-align: center;
-	/*color: #8080ff;*/
+	/*width: 31%;*/    /* 横幅を割合で指定 */
+    /*height: auto;*/
+    
+    text-align: center;
+    letter-spacing: 3px;
+    color: #ffffd7;    
+    position: relative;
+    padding: 60px 60px;
+    background-size: cover;
+	box-shadow: 0px 30px 60px -5px #000;
+	height:100%;
 }
 
-body {
-	/*background-color: #ffe1f7;*/
-	letter-spacing: 3px;
-}
+
 
 .submit {
   display       : inline-block;
@@ -23,15 +32,15 @@ body {
   text-align    : center;      /* 文字位置   */
   cursor        : pointer;     /* カーソル   */
   padding       : 3px 3px;   /* 余白       */
-  background    : #17f2f2;     /* 背景色     */
-  color         : #ffffff;     /* 文字色     */
+  background    : #ffffd7;     /* 背景色     */
+  color         : #000000;     /* 文字色     */
   line-height   : 1em;         /* 1行の高さ  */
   transition    : .3s;         /* なめらか変化 */
   box-shadow    : 2px 2px 6px #666666;  /* 影の設定 */
-  border        : 2px solid #17f2f2;    /* 枠の指定 */
+  border        : 2px solid #ffffd7;    /* 枠の指定 */
 }
 .submit:hover {
   box-shadow    : none;        /* カーソル時の影消去 */
-  color         : #17f2f2;     /* 背景色     */
-  background    : #ffffff;     /* 文字色     */
+  color         : #ffffd7;     /* 背景色     */
+  background    : #000000;     /* 文字色     */
 }

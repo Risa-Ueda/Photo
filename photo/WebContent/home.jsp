@@ -20,15 +20,16 @@
 		</form>
 		<p>ALL Posted</p>
 		<p>${message}</p>
-		</div>
+		
 		<c:if test="${post !=null}">
 			<c:forEach var="i" items="${post}">
 						<div class="username">${i.username}</div>
 						<br>
-						<div class="imgname"><img src=${i.imgname}.jpg width=400 height=auto></div>
-						<div class="comment">${i.comment}</div>
+						<div class="imgname"><img src=${i.imgname} width=400 height=auto></div>
+						<div class="comment">comment:${i.comment}</div>
 						<br>
 			</c:forEach>
 		</c:if>
+		</div>
 </body>
 </html>

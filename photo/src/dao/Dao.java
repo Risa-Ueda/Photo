@@ -126,7 +126,7 @@ public class Dao {
 		PreparedStatement ps = null;//psSQLをどのデータベースにどのようなクエリを送るのか定義
 		int n = 0;//トライブロックの中にいると戻り値として認識されない
 		try {
-			String sql = "INSERT INTO post (username, imgname)VALUES (?, ?, ?)";//?はユーザーが打ち込んだ値
+			String sql = "INSERT INTO post (username, imgname, comment)VALUES (?, ?, ?)";//?はユーザーが打ち込んだ値
 			ps = con.prepareStatement(sql);
 			ps.setString(1, username);//
 			ps.setString(2, imgname);
@@ -139,4 +139,37 @@ public class Dao {
 	return n;//コード認証が成功した数を返す戻り式
 	}
 	
+	public int setImageName(String imageName) throws SQLException {
+        int n = 0;
+        sql = " insert into imagename(imgname) values(?)";
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement(sql);//sql文の実行準備
+            ps.setString(1, imageName);
+            n = ps.executeUpdate();//
+        }finally {//どの
+            ps.close();//SQL自体必要がなくなったためリソースを開放する
+        }
+        return n;
+    }
+	
+	public ArrayList<String> getNameAll() throws SQLException{//DBに保存されているデータを全件取得するメソッド/メッセージdto.javaが一行分のデータを取得する
+		// ここに処理を記入してください
+		sql = " select * from post;";//sql文を文字列として配置
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		ArrayList<String> list = null;
+		try {
+			ps = con.prepareStatement(sql);//sql文の実行準備
+			rs = ps.executeQuery();//
+			list = new ArrayList<>();//ArrayListをインスタンス化
+			while(rs.next()) {//rs.nextによってカーソルが移動する
+				list.add(rs.getString("imgname"));
+			}
+			rs.close();//SQL自体必要がなくなったためリソースを開放する
+		}finally {//どの
+			ps.close();//SQL自体必要がなくなったためリソースを開放する
+		}
+		return list;	
+	}
 }

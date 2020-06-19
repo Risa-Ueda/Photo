@@ -10,15 +10,15 @@
 <body>
 	<div>
 		<p>CREATE PAGE</p>
-			<form action="CreateFinish" method="post">
+			<form action="Create" method="post">
 			<p>${message}</p>
-			<img src=${imgname}.jpg width=400 height=auto>
+			<img src=${imgname} width=400 height=auto>
 				<br>
 			<input type="text" name="comment" placeholder="add your comment!">
 				<br>
-			<input type="text" name="username" value="${username}" placeholder="username">
+			<input type="text" name="username" value="${name}" placeholder="username">
 				<br>
-			<input type="text" name="imagename" value="${imgname}">
+			<input type="text" name="imagename" value="${imgname}" placeholder="imagename">
 				<br>
 			<input class="submit" type="submit" name="CreateFinish" value="CreateFinish">
 			</form>

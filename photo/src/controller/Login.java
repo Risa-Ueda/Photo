@@ -52,6 +52,10 @@ public class Login extends HttpServlet {
 			success = dao.getLoginInfo(name, pass);//successsの変数にnameとpassの値を代入、getLogininfoで取得
 			postimage = dao.getListAll();//daoのgetListAllのメソッドをpostimageに代入(全部の投稿を抽出)			
 			request.setAttribute("post", postimage);//postという文字列をpostimageという名前で保存
+			
+			 HttpSession session = request.getSession();
+		        session.setAttribute("name", name);//usernameをセッションで保持
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}	

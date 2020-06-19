@@ -21,20 +21,13 @@ public class Image extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		boolean success = false;
 		Dao dao = null;
 		String imagename = request.getParameter("imagename");
+		//String button = request.getParameter("button");	
 		try {
 			dao = new Dao();//DaoÇ∆ê⁄ë±
 			success = dao.getImagename(imagename);//DBÇ…Ç†ÇÈimagenameÇéÊìæ
@@ -45,6 +38,13 @@ public class Image extends HttpServlet {
 		System.out.println(success);
 		if(success) {
 			request.setAttribute("imgname", imagename);//DBÇ…Ç†ÇÈimagenameÇÉZÉbÉg
+			
+		/*}else if(button.equals("upload")){
+			ServletContext context = getServletContext();
+			RequestDispatcher dis = context.getRequestDispatcher("/Upload.java");//è„éËÇ≠Ç¢Ç©Ç»ÇØÇÍÇŒimage.jspÇ…ñﬂÇ∑
+			dis.forward(request, response);*/
+		
+		
 		}else {
 			ServletContext context = getServletContext();
 			RequestDispatcher dis = context.getRequestDispatcher("/image.jsp");//è„éËÇ≠Ç¢Ç©Ç»ÇØÇÍÇŒimage.jspÇ…ñﬂÇ∑

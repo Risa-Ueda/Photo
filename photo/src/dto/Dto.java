@@ -56,8 +56,4 @@ public class Dto { //Dtoが一行分のデータを持っている
 		this.username = username;
 	}
 
-	
-	
-	
-	
 }

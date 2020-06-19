@@ -13,10 +13,19 @@
 			<form action="Image" method="post">
 			<img src=white.jpg width=400 height=auto>
 			<br>
-			<input class="submit" type="submit" name="imagename" value="sky">
-			<input class="submit" type="submit" name="imagename" value="pc">
-			<input class="submit" type="submit" name="imagename" value="time">
+			<input class="submit" type="submit" name="imagename" value="sky.jpg">
+			<input class="submit" type="submit" name="imagename" value="pc.jpg">
+			<input class="submit" type="submit" name="imagename" value="time.jpg">
 			</form>
+			
+			<!-- 画像アップロード用フォーム -->
+		<form action="Upload" enctype="multipart/form-data" method="post">
+			<input type="file" name="image">
+			<!-- アップロード用ボタン -->
+			<input class="submit" type="submit" value="upload" name="button">
+			<!-- 一覧表示用ボタン -->
+			<input class="submit" type="submit" value="view" name="button">
+		</form>
 	</div>
 </body>
 </html>

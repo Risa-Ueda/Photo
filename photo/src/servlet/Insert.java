@@ -20,7 +20,8 @@ public class Insert implements DBAccess { //DBAccess
 		// ここに処理を記入してください
 		Dao dao = null;
 		String username = request.getParameter("username");
-		String imgname = request.getParameter("imgname");
+		String imgname = (String) request.getAttribute("imgname");
+		System.out.println(imgname);
 		String comment = request.getParameter("comment");//ユーザーからの入力を受け取っている
 		
 		try {

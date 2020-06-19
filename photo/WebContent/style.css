@@ -9,6 +9,9 @@ div {
     color: #710038;
 }
 
+img{
+	border-radius: 10px;
+}
 
 
 .submit {
