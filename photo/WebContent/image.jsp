@@ -11,13 +11,17 @@
 	<div>
 		<p>IMAGE PAGE</p>
 			<form action="Image" method="post">
-			<img src=white.jpg width=400 height=auto>
+			<img src=sky.jpg width=400 height=auto>
+			<img src=pc.jpg width=400 height=auto>
+			<img src=time.jpg width=400 height=auto>
+			
 			<br>
 			<input class="submit" type="submit" name="imagename" value="sky.jpg">
 			<input class="submit" type="submit" name="imagename" value="pc.jpg">
 			<input class="submit" type="submit" name="imagename" value="time.jpg">
 			</form>
 			
+			<br>
 			<!-- 画像アップロード用フォーム -->
 		<form action="Upload" enctype="multipart/form-data" method="post">
 			<input type="file" name="image">

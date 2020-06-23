@@ -13,6 +13,8 @@ div {
 }
 
 .username {
+	padding: 5px 0;
+	border-top: 2px solid #ffcce6;
 	font-weight: bold;
 }
 
@@ -21,7 +23,7 @@ div {
 }
 
 .comment {
-	border-bottom: 2px solid #ffcce6;
+	padding: 10px 0;
 }
 
 .submit {
@@ -37,6 +39,7 @@ div {
   transition    : .3s;         /* なめらか変化 */
   box-shadow    : 2px 2px 6px #666666;  /* 影の設定 */
   border        : 2px solid #ffbbdd;    /* 枠の指定 */
+  margin: 10px 0;
 }
 .submit:hover {
   box-shadow    : none;        /* カーソル時の影消去 */

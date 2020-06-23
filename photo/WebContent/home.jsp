@@ -17,7 +17,7 @@
 		<input class="submit" type="submit" name="button" value="image">
 		<input class="submit" type="submit" name="button" value="like">
 		<input class="submit" type="submit" name="button" value="logout">
-		</form>
+		
 		<p>ALL Posted</p>
 		<p>${message}</p>
 		
@@ -27,9 +27,11 @@
 						<br>
 						<div class="imgname"><img src=${i.imgname} width=400 height=auto></div>
 						<div class="comment">comment:${i.comment}</div>
+						<input class="submit" type="submit" name="button" value="delete"><input type="hidden" name="id" value="${i.id}">
 						<br>
 			</c:forEach>
 		</c:if>
+		</form>
 		</div>
 </body>
 </html>

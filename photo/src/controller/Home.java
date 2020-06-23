@@ -34,7 +34,7 @@ public class Home extends HttpServlet {
 				dis.forward(request, response);
 			} else if(button.equals("like")){
 				ServletContext context = getServletContext();
-				RequestDispatcher dis = context.getRequestDispatcher("/like.jsp");//imagepost以外だったらlike.jspに飛ばす
+				RequestDispatcher dis = context.getRequestDispatcher("/like.jsp");//like.jspに飛ばす
 				dis.forward(request, response);
 			} else if(button.equals("home")){
 				Dao dao = null;
@@ -49,6 +49,21 @@ public class Home extends HttpServlet {
 				ServletContext context = getServletContext();
 				RequestDispatcher dis = context.getRequestDispatcher("/home.jsp");//imagepost以外だったらlike.jspに飛ばす
 				dis.forward(request, response);
+				
+			} else if(button.equals("delete")){
+				Dao dao = null;
+				String id = request.getParameter("id");
+				try {
+					dao = new Dao();
+					dao.deleteData(id);
+					System.out.println(id);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}	
+				ServletContext context = getServletContext();
+				RequestDispatcher dis = context.getRequestDispatcher("/delete.jsp");//imagepost以外だったらlike.jspに飛ばす
+				dis.forward(request, response);
+				
 			}else {
 				//request.setAttribute("message", "!ページを選択してください");
 				ServletContext context = getServletContext();

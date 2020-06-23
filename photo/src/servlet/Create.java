@@ -41,7 +41,7 @@ public class Create extends HttpServlet {
 			e.printStackTrace();
 		}
 		//System.out.println(dto.getId());
-		if(dto != null) {//一致したら
+		if(imagename != null) {//imagenameの値がDBに入っていた場合
 			request.setAttribute("username", username);//usernameをusernameにセット
 			request.setAttribute("imgname", imagename);//imagenameをimagenameにセット
 			request.setAttribute("comment", comment);
@@ -60,7 +60,7 @@ public class Create extends HttpServlet {
 			RequestDispatcher dis = context.getRequestDispatcher("/create.jsp");//create.jspにページを戻す
 			dis.forward(request, response);
 		}else {//それ以外
-			request.setAttribute("message", "!ユーザ名、画像ファイルが一致しません");
+			request.setAttribute("message", "!エラーが発生しました");
 			ServletContext context = getServletContext();
 			RequestDispatcher dis = context.getRequestDispatcher("/create.jsp");//imagepost.jspに戻す
 			dis.forward(request, response);

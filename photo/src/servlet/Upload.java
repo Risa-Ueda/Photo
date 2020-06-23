@@ -70,8 +70,11 @@ public class Upload extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+        
+        request.setAttribute("imgname", name);
+        
         ServletContext context = getServletContext();
-		RequestDispatcher dis = context.getRequestDispatcher("/upload.jsp");//home.jspに飛ばす
+		RequestDispatcher dis = context.getRequestDispatcher("/create.jsp");//home.jspに飛ばす
 		dis.forward(request, response);
 	}
 	

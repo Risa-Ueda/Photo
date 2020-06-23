@@ -59,7 +59,7 @@ public class Dao {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		boolean success;
-		sql = "SELECT * from imagename where imgname = ?";
+		sql = "SELECT * from post where imgname = ?";
 		ps = con.prepareStatement(sql);
 		ps.setString(1, imagename);
 		try {
@@ -94,27 +94,27 @@ public class Dao {
 		return dto;
 	}
 	
-	public ArrayList<Dto> getListAll() throws SQLException{//DBに保存されているデータを全件取得するメソッド/メッセージdto.javaが一行分のデータを取得する
-		// ここに処理を記入してください
-		sql = " select * from post;";//sql文を文字列として配置
+	public ArrayList<Dto> getListAll() throws SQLException{
+		//DBに保存されているデータを全件取得するメソッド/メッセージdto.javaが一行分のデータを取得する
+		sql = " SELECT * from post where username is not null;";//sql文を文字列として配置
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		ArrayList<Dto> list = null;
 		try {
 			ps = con.prepareStatement(sql);//sql文の実行準備
-			rs = ps.executeQuery();//
+			rs = ps.executeQuery();//sql文実行
 			list = new ArrayList<>();//ArrayListをインスタンス化
 			Dto dto;
 			while(rs.next()) {//rs.nextによってカーソルが移動する
 				dto = new Dto();//dtoにインスタンス化したものを与え、メッセージｄｔoのインスタンス化をしている
 				dto.setId(rs.getInt("id"));//id列の値を取得
-				dto.setusername(rs.getString("username"));
-				dto.setImgname(rs.getString("imgname"));
-				dto.setComment(rs.getString("comment"));//content列の文をストリング型として受け取る
-				list.add(dto);
+				dto.setusername(rs.getString("username"));//username列の値を取得
+				dto.setImgname(rs.getString("imgname"));//imgname列の値を取得
+				dto.setComment(rs.getString("comment"));//content列の値を取得
+				list.add(dto);//listに追加
 			}
 			rs.close();//SQL自体必要がなくなったためリソースを開放する
-		}finally {//どの
+		}finally {
 			ps.close();//SQL自体必要がなくなったためリソースを開放する
 		}
 		Comparator<Dto> comparator = Comparator.comparing(Dto::getId).reversed();//Idの数字で比較して並べ替えをする
@@ -122,46 +122,48 @@ public class Dao {
 		return (ArrayList<Dto>) list.stream().sorted(comparator).collect(Collectors.toList());	
 	}
 	
-	public int insertData(String username, String imgname, String comment) throws SQLException{//取得したデータの登録するためのメソッド/String inputはユーザーが打ち込んだ内容/int型として戻ってくる
+	public int insertData(String username, String imgname, String comment) throws SQLException{
+		//取得したデータの登録するためのメソッド
 		PreparedStatement ps = null;//psSQLをどのデータベースにどのようなクエリを送るのか定義
 		int n = 0;//トライブロックの中にいると戻り値として認識されない
 		try {
-			String sql = "INSERT INTO post (username, imgname, comment)VALUES (?, ?, ?)";//?はユーザーが打ち込んだ値
-			ps = con.prepareStatement(sql);
-			ps.setString(1, username);//
-			ps.setString(2, imgname);
-			ps.setString(3, comment);
+			String sql = "INSERT INTO post (username, imgname, comment)VALUES (?, ?, ?)";//引数のusername,imgname,commentを受け取りsql文でインサート
+			ps = con.prepareStatement(sql);//sql文を用意
+			ps.setString(1, username);//usernameの値をセット
+			ps.setString(2, imgname);//imgnameの値をセット
+			ps.setString(3, comment);//commentの値をセット
 			n = ps.executeUpdate();//sqlの実行文
 	}finally {
-		ps.close();
+		ps.close();//閉じる
 	}
 	// ここに処理を記入してください
 	return n;//コード認証が成功した数を返す戻り式
 	}
 	
 	public int setImageName(String imageName) throws SQLException {
+		//Upload.javaでアップロードされたファイル名を登録
         int n = 0;
-        sql = " insert into imagename(imgname) values(?)";
+        sql = " insert into post(imgname) values(?)";//image.jspで取得したファイル名をsql文でインサート
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);//sql文の実行準備
-            ps.setString(1, imageName);
-            n = ps.executeUpdate();//
-        }finally {//どの
+            ps.setString(1, imageName);//imagenameにファイル名をセット
+            n = ps.executeUpdate();//sql文を実行
+        }finally {
             ps.close();//SQL自体必要がなくなったためリソースを開放する
         }
         return n;
     }
 	
-	public ArrayList<String> getNameAll() throws SQLException{//DBに保存されているデータを全件取得するメソッド/メッセージdto.javaが一行分のデータを取得する
-		// ここに処理を記入してください
+	public ArrayList<String> getNameAll() throws SQLException{
+		//DBに保存されているデータを全件取得するメソッド/メッセージdto.javaが一行分のデータを取得する
 		sql = " select * from post;";//sql文を文字列として配置
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		ArrayList<String> list = null;
 		try {
 			ps = con.prepareStatement(sql);//sql文の実行準備
-			rs = ps.executeQuery();//
+			rs = ps.executeQuery();//sql文を実行
 			list = new ArrayList<>();//ArrayListをインスタンス化
 			while(rs.next()) {//rs.nextによってカーソルが移動する
 				list.add(rs.getString("imgname"));
@@ -171,5 +173,19 @@ public class Dao {
 			ps.close();//SQL自体必要がなくなったためリソースを開放する
 		}
 		return list;	
-	}
+	}	
+	
+	public int deleteData(String id) throws SQLException {
+		PreparedStatement ps = null;//psSQLをどのデータベースにどのようなクエリを送るのか定義
+		int n = 0;//トライブロックの中にいると戻り値として認識されない
+		try {
+			String sql = "delete from post where id = ?";//?はユーザーが打ち込んだ値
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			n = ps.executeUpdate();//sqlの実行文
+		}finally {
+			ps.close();
+		}
+		return n;//コード認証が成功した数を返す戻り式
+		}	
 }

@@ -27,7 +27,6 @@ public class Image extends HttpServlet {
 		boolean success = false;
 		Dao dao = null;
 		String imagename = request.getParameter("imagename");
-		//String button = request.getParameter("button");	
 		try {
 			dao = new Dao();//Dao‚ÆÚ‘±
 			success = dao.getImagename(imagename);//DB‚É‚ ‚éimagename‚ğæ“¾
@@ -38,13 +37,6 @@ public class Image extends HttpServlet {
 		System.out.println(success);
 		if(success) {
 			request.setAttribute("imgname", imagename);//DB‚É‚ ‚éimagename‚ğƒZƒbƒg
-			
-		/*}else if(button.equals("upload")){
-			ServletContext context = getServletContext();
-			RequestDispatcher dis = context.getRequestDispatcher("/Upload.java");//ãè‚­‚¢‚©‚È‚¯‚ê‚Îimage.jsp‚É–ß‚·
-			dis.forward(request, response);*/
-		
-		
 		}else {
 			ServletContext context = getServletContext();
 			RequestDispatcher dis = context.getRequestDispatcher("/image.jsp");//ãè‚­‚¢‚©‚È‚¯‚ê‚Îimage.jsp‚É–ß‚·
