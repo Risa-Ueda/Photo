@@ -41,6 +41,7 @@ div {
   border        : 2px solid #ffbbdd;    /* 枠の指定 */
   margin: 10px 0;
 }
+
 .submit:hover {
   box-shadow    : none;        /* カーソル時の影消去 */
   color         : #ffbbdd;     /* 背景色     */

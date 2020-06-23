@@ -11,35 +11,14 @@ package dto;
  */
 public class Dto { //Dtoが一行分のデータを持っている
 	
-	/**
-	 * 投稿ID
-	 */
 	int id;//idのゲッターとセッター
 	
 	String username;//usernameのゲッターとセッター
-	
-	
+		
 	String imgname;//imgnameのゲッターとセッター
 	
 	String comment;
-
 	
-	public String getComment() {
-		return comment;
-	}
-
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
-
-	public String getImgname() {
-		return imgname;
-	}
-
-	public void setImgname(String imgname) {
-		this.imgname = imgname;
-	}
-
 	public int getId() {
 		return id;
 	}
@@ -55,5 +34,20 @@ public class Dto { //Dtoが一行分のデータを持っている
 	public void setusername(String username) {
 		this.username = username;
 	}
+	
+	public String getImgname() {
+		return imgname;
+	}
 
+	public void setImgname(String imgname) {
+		this.imgname = imgname;
+	}
+	
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
 }

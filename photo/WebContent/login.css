@@ -39,6 +39,7 @@ div {
   box-shadow    : 2px 2px 6px #666666;  /* 影の設定 */
   border        : 2px solid #ffffd7;    /* 枠の指定 */
 }
+
 .submit:hover {
   box-shadow    : none;        /* カーソル時の影消去 */
   color         : #ffffd7;     /* 背景色     */

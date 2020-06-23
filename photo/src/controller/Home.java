@@ -27,47 +27,46 @@ public class Home extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String button = request.getParameter("button");		//buttonが押されたら
+		String button = request.getParameter("button");//buttonが押されたら
 			if(button.equals("image")){	//imageのボタンが押されたら
 				ServletContext context = getServletContext();
 				RequestDispatcher dis = context.getRequestDispatcher("/image.jsp");//image.jspに飛ばす
 				dis.forward(request, response);
-			} else if(button.equals("like")){
+			} else if(button.equals("like")){//likeのボタンが押されたら
 				ServletContext context = getServletContext();
 				RequestDispatcher dis = context.getRequestDispatcher("/like.jsp");//like.jspに飛ばす
 				dis.forward(request, response);
-			} else if(button.equals("home")){
+			} else if(button.equals("home")){//homeのボタンが押されたら
 				Dao dao = null;
-				ArrayList<Dto> postimage = null;
+				ArrayList<Dto> postimage = null;//ArrayListをpostimageで定義
 				try {
-					dao = new Dao();
+					dao = new Dao();//Daoに接続
 					postimage = dao.getListAll();//daoのgetListAllのメソッドをpostimageに代入(全部の投稿を抽出)			
 					request.setAttribute("post", postimage);//postという文字列をpostimageという名前で保存					
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}	
 				ServletContext context = getServletContext();
-				RequestDispatcher dis = context.getRequestDispatcher("/home.jsp");//imagepost以外だったらlike.jspに飛ばす
+				RequestDispatcher dis = context.getRequestDispatcher("/home.jsp");//home.jspに飛ばす
 				dis.forward(request, response);
 				
-			} else if(button.equals("delete")){
+			} else if(button.equals("delete")){//deleteのボタンが押されたら
 				Dao dao = null;
-				String id = request.getParameter("id");
+				String id = request.getParameter("id");//idを取得
 				try {
-					dao = new Dao();
-					dao.deleteData(id);
+					dao = new Dao();//Daoに接続
+					dao.deleteData(id);//引数のidの投稿を削除
 					System.out.println(id);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}	
 				ServletContext context = getServletContext();
-				RequestDispatcher dis = context.getRequestDispatcher("/delete.jsp");//imagepost以外だったらlike.jspに飛ばす
+				RequestDispatcher dis = context.getRequestDispatcher("/delete.jsp");//delete.jspに飛ばす
 				dis.forward(request, response);
 				
-			}else {
-				//request.setAttribute("message", "!ページを選択してください");
+			} else {
 				ServletContext context = getServletContext();
-				RequestDispatcher dis = context.getRequestDispatcher("/login.jsp");//imagepost以外だったらlike.jspに飛ばす
+				RequestDispatcher dis = context.getRequestDispatcher("/login.jsp");//login.jspに飛ばす
 				dis.forward(request, response);
 			}
 	}
