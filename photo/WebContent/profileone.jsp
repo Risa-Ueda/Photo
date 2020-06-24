@@ -4,19 +4,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>HOME PAGE</title>
-	<link rel="stylesheet" href="home.css">
+<meta charset="utf-8">
+<title>Profile PAGE</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-		<div class="top">
-			<p>HOME PAGE</p>
-				<form action="Home" method="post">	
-					<input class="submit" type="submit" name="button" value="image">
-					<input class="submit" type="submit" name="button" value="profile">
-					<input class="submit" type="submit" name="button" value="logout">
-					<p>ALL Posted</p>
-						<c:if test="${post !=null}">
+	<div>
+		<p>Profile PAGE</p>
+				<c:if test="${post !=null}">
 							<c:forEach var="i" items="${post}">
 								<div class="username">${i.username}</div>
 									<br>
@@ -26,7 +21,6 @@
 									<br>
 							</c:forEach>
 						</c:if>
-				</form>
-		</div>
+	</div>
 </body>
 </html>

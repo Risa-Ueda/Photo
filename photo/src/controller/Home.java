@@ -32,9 +32,18 @@ public class Home extends HttpServlet {
 				ServletContext context = getServletContext();
 				RequestDispatcher dis = context.getRequestDispatcher("/image.jsp");//image.jspに飛ばす
 				dis.forward(request, response);
-			} else if(button.equals("like")){//likeのボタンが押されたら
+			} else if(button.equals("profile")){//likeのボタンが押されたら
+				Dao dao = null;
+				ArrayList<Dto> postimage = null;//ArrayListをpostimageで定義
+				try {
+					dao = new Dao();//Daoに接続
+					postimage = dao.getUserAll();//daoのgetListAllのメソッドをpostimageに代入(全部の投稿を抽出)			
+					request.setAttribute("post", postimage);//postという文字列をpostimageという名前で保存					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}				
 				ServletContext context = getServletContext();
-				RequestDispatcher dis = context.getRequestDispatcher("/like.jsp");//like.jspに飛ばす
+				RequestDispatcher dis = context.getRequestDispatcher("/profile.jsp");//like.jspに飛ばす
 				dis.forward(request, response);
 			} else if(button.equals("home")){//homeのボタンが押されたら
 				Dao dao = null;

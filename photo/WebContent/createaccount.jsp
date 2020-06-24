@@ -18,7 +18,9 @@
 				<br>
 			<input class="submit" type="submit" name="button" value="account">
 			<input class="submit" type="submit" name="button" value="login">
-		</form>
+			</form>
+			<input type="submit" onclick="location.href=http://localhost:8080/photo/Login" value=”login”>
+		
 	</div>
 </body>
 </html>

@@ -176,5 +176,47 @@ public class Dao {
 			ps.close();
 		}
 		return n;//コード認証が成功した数を返す戻り式
+	}
+	
+	public ArrayList<Dto> getUserAll() throws SQLException{
+		//DBに保存されているデータを全件取得するメソッド/メッセージdto.javaが一行分のデータを取得する
+		sql = "SELECT DISTINCT username from post where username is not null;";//sql文を文字列として配置
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		ArrayList<Dto> list = null;
+		try {
+			ps = con.prepareStatement(sql);//sql文の実行準備
+			rs = ps.executeQuery();//sql文実行
+			list = new ArrayList<>();//ArrayListをインスタンス化
+			Dto dto;
+			while(rs.next()) {//rs.nextによってカーソルが移動する
+				dto = new Dto();//dtoにインスタンス化したものを与え、メッセージｄｔoのインスタンス化をしている
+				dto.setusername(rs.getString("username"));
+				list.add(dto);//listに追加
+			}
+			rs.close();//SQL自体必要がなくなったためリソースを開放する
+		}finally {
+			ps.close();//SQL自体必要がなくなったためリソースを開放する
 		}
+		Comparator<Dto> comparator = Comparator.comparing(Dto::getId).reversed();//Idの数字で比較して並べ替えをする
+		
+		return (ArrayList<Dto>) list.stream().sorted(comparator).collect(Collectors.toList());	
+	}
+	
+	public int getuserPosts(String username) throws SQLException{
+		//Image.javaで画像名と一致させるメソッド
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int success = 0;
+		sql = "select count(id) from post where username = ?";
+		ps = con.prepareStatement(sql);
+		ps.setString(1, username);
+		try {
+			rs = ps.executeQuery();
+			success = rs.getInt(success);
+		}finally {
+			ps.close();
+		}
+		return success;
+	}
 }
