@@ -20,6 +20,7 @@
 			<input class="submit" type="submit" name="button" value="login">
 			</form>
 			<input type="submit" onclick="location.href=http://localhost:8080/photo/Login" value=”login”>
+			<a href="javascript:history.back();">return</a>
 		
 	</div>
 </body>

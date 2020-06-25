@@ -20,6 +20,8 @@
 							</c:forEach>
 						</c:if>
 					</form>
+					<br>
+					<a class="submit" href="javascript:history.back();">return</a>
 	</div>
 </body>
 </html>

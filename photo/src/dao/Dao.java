@@ -180,7 +180,7 @@ public class Dao {
 	
 	public ArrayList<Dto> getUserAll() throws SQLException{
 		//DBに保存されているデータを全件取得するメソッド/メッセージdto.javaが一行分のデータを取得する
-		sql = "SELECT DISTINCT username from post where username is not null;";//sql文を文字列として配置
+		sql = "SELECT username from user;";//sql文を文字列として配置
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		ArrayList<Dto> list = null;
@@ -204,19 +204,51 @@ public class Dao {
 	}
 	
 	public int getuserPosts(String username) throws SQLException{
-		//Image.javaで画像名と一致させるメソッド
+		//投稿数を表示するメソッド
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		int success = 0;
-		sql = "select count(id) from post where username = ?";
+		int posts = 0;
+		sql = "select count(id) from post where username = ?";//usernameを受け取ってそのユーザーの投稿数をカウント
 		ps = con.prepareStatement(sql);
-		ps.setString(1, username);
+		ps.setString(1, username);//usernameをセット
 		try {
-			rs = ps.executeQuery();
-			success = rs.getInt(success);
+			rs = ps.executeQuery();//結果を受け取る
+			rs.next();//結果の部分にカーソルを乗せる
+			posts = rs.getInt("count(id)");//successにcount(id)の部分の値を数値として受け取る
+			System.out.println(posts);//投稿数を表示
 		}finally {
 			ps.close();
 		}
-		return success;
+		return posts;
 	}
+	
+	public ArrayList<Dto> getUserListAll(String username) throws SQLException{
+		//DBに保存されている一人のユーザーのデータを全件取得するメソッド//メッセージdto.javaが一行分のデータを取得する
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		ArrayList<Dto> list = null;
+		sql = "SELECT * from post where username = ?;";//usernameを?に引き渡し
+		try {
+			ps = con.prepareStatement(sql);//sql文の実行準備
+			ps.setString(1, username);
+			rs = ps.executeQuery();//sql文実行
+			list = new ArrayList<>();//ArrayListをインスタンス化
+			Dto dto;
+			while(rs.next()) {//rs.nextによってカーソルが移動する
+				dto = new Dto();//dtoにインスタンス化したものを与え、メッセージｄｔoのインスタンス化をしている
+				dto.setId(rs.getInt("id"));//id列の値を取得
+				dto.setusername(rs.getString("username"));//username列の値を取得
+				dto.setImgname(rs.getString("imgname"));//imgname列の値を取得
+				dto.setComment(rs.getString("comment"));//comment列の値を取得
+				list.add(dto);//listに追加
+			}
+			rs.close();//SQL自体必要がなくなったためリソースを開放する
+		}finally {
+			ps.close();//SQL自体必要がなくなったためリソースを開放する
+		}
+		Comparator<Dto> comparator = Comparator.comparing(Dto::getId).reversed();//Idの数字で比較して並べ替えをする
+		
+		return (ArrayList<Dto>) list.stream().sorted(comparator).collect(Collectors.toList());	
+	}
+	
 }

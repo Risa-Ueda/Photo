@@ -36,7 +36,15 @@ public class Upload extends HttpServlet {
         Path filePath = Paths.get("C:\\Users\\Risa\\eclipse-workspace\\photo\\WebContent" + File.separator + name);//WebContentにファイルを保存することを決める
         InputStream in = part.getInputStream();//画像を取得
         Files.copy(in, filePath, StandardCopyOption.REPLACE_EXISTING);//ファイルをコピーし画像を保存
-        request.setAttribute("imgname", name);//create.jspにファイル名を送る        
+        request.setAttribute("imgname", name);//create.jspにファイル名を送る    
+        
+        try {
+			Thread.sleep(3741);//()の間の時間が終わるまで次のページに遷移しない
+		} catch (InterruptedException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+        
         ServletContext context = getServletContext();
 		RequestDispatcher dis = context.getRequestDispatcher("/post.jsp");//create.jspに飛ばす
 		dis.forward(request, response);

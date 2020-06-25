@@ -24,8 +24,9 @@
 			<form action="Upload" enctype="multipart/form-data" method="post">
 				<input type="file" name="image">
 				<input class="submit" type="submit" value="upload" name="button">
-				<input class="submit" type="submit" value="view" name="button">
 			</form>
+			<br>
+			<a class="submit" href="javascript:history.back();">return</a>
 	</div>
 </body>
 </html>

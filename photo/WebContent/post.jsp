@@ -13,6 +13,7 @@
 			<form action="Post" method="post">
 				<p>${message}</p>
 				<img src=${imgname} width=400 height=auto>
+				<div class="att"style="font-size: 13px;">画像が表示されない場合はページを更新してください</div>
 					<br>
 				<input type="text" name="comment" placeholder="add your comment!">
 					<br>
@@ -22,6 +23,8 @@
 					<br>
 				<input class="submit" type="submit" name="PostFinish" value="PostFinish">
 			</form>
+			<br>
+			<a class="submit" href="javascript:history.back();">return</a>
 	</div>
 </body>
 </html>
