@@ -10,11 +10,11 @@
 </head>
 <body>
 	<div>
-		<p>DELETE PAGE</p>
+		<h3>DELETE PAGE</h3>
 		<p>投稿が削除されました</p>
-		<form action="Home" method="post">			
-			<input class="submit" type="submit" name="button" value="home">
-		</form>
+			<form action="Home" method="post"><!-- Home.javaに飛ぶ -->
+				<input class="submit" type="submit" name="button" value="home"><!-- buttonにhomeの値を入れる -->
+			</form>
 	</div>
 </body>
 </html>

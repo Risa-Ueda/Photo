@@ -148,12 +148,27 @@ public class Dao {
 	return n;//コード認証が成功した数を返す戻り式
 	}
 	
-	public int deleteData(String id) throws SQLException {
+	public int deletePost(String id) throws SQLException {
 		//投稿を削除するメソッド
 		PreparedStatement ps = null;//psSQLをどのデータベースにどのようなクエリを送るのか定義
 		int n = 0;//トライブロックの中にいると戻り値として認識されない
 		try {
 			String sql = "delete from post where id = ?";//?はユーザーが打ち込んだ値
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);//idの値をを取得
+			n = ps.executeUpdate();//sqlの実行文
+		}finally {
+			ps.close();
+		}
+		return n;//コード認証が成功した数を返す戻り式
+		}	
+	
+	public int deleteAcct(String id) throws SQLException {
+		//投稿を削除するメソッド
+		PreparedStatement ps = null;//psSQLをどのデータベースにどのようなクエリを送るのか定義
+		int n = 0;//トライブロックの中にいると戻り値として認識されない
+		try {
+			String sql = "delete from user where id = ?";//?はユーザーが打ち込んだ値
 			ps = con.prepareStatement(sql);
 			ps.setString(1, id);//idの値をを取得
 			n = ps.executeUpdate();//sqlの実行文

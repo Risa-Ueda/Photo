@@ -9,24 +9,24 @@
 </head>
 <body>
 	<div>
-		<p>IMAGE PAGE</p>
-			<form action="Image" method="post">
-				<img src=sky.jpg width=400 height=auto>
-				<img src=pc.jpg width=400 height=auto>
-				<img src=time.jpg width=400 height=auto>	
+		<h3>IMAGE PAGE</h3>
+			<form action="Image" method="post"><!-- Image.javaに飛ぶ -->
+				<img src=sky.jpg width=400 height=auto><!-- sky.jpgの画像表示 -->
+				<img src=pc.jpg width=400 height=auto><!-- pc.jpgの画像表示 -->
+				<img src=time.jpg width=400 height=auto><!-- time.jpgの画像表示 -->
 					<br>
-				<input class="submit" type="submit" name="imagename" value="sky.jpg">
-				<input class="submit" type="submit" name="imagename" value="pc.jpg">
-				<input class="submit" type="submit" name="imagename" value="time.jpg">
+				<input class="submit" type="submit" name="imagename" value="sky.jpg"><!-- sky.jpgをimagenameに値を入れる -->
+				<input class="submit" type="submit" name="imagename" value="pc.jpg"><!-- pc.jpgをimagenameに値を入れる -->
+				<input class="submit" type="submit" name="imagename" value="time.jpg"><!-- time.jpgをimagenameに値を入れる -->
 			</form>	
 				<br>
-			<!-- 画像アップロード用フォーム -->
-			<form action="Upload" enctype="multipart/form-data" method="post">
-				<input type="file" name="image">
-				<input class="submit" type="submit" value="upload" name="button">
+			<p>${message}</p>
+			<form action="Upload" enctype="multipart/form-data" method="post"><!-- Upload.javaに飛ぶ -->
+				<input type="file" name="image"><!-- フォルダを開き、画像を取得 -->
+				<input class="submit" type="submit" value="upload" name="button"><!-- buttonにuploadの値を入れる -->
 			</form>
-			<br>
-			<a class="submit" href="javascript:history.back();">return</a>
+				<br>
+		<a class="submit" href="javascript:history.back();">return</a><!-- 履歴のひとつ前のページに戻る -->
 	</div>
 </body>
 </html>

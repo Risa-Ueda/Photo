@@ -20,8 +20,10 @@ public class Insert implements DBAccess { //DBAccess
 		String username = request.getParameter("username");//jspで入力されたusernameを取得
 		String imgname = (String) request.getAttribute("imgname");//jspで入力されたimgnameを取得
 		String comment = request.getParameter("comment");//ユーザーからの入力を受け取っている
+		
 		try {
 			dao = new Dao();//Daoクラスのコンストラクタでdbとつなげる
+			
 			if(dao.insertData(username, imgname, comment) > 0) {//inputとはユーザーがテキストをポストした回数
 				request.setAttribute("message", "投稿完了!");
 				System.out.println("Insert success!");
@@ -29,6 +31,7 @@ public class Insert implements DBAccess { //DBAccess
 				request.setAttribute("message", "投稿失敗...");
 				System.out.println("Insert failed...");
 			}
+			
 		}finally {
 			if(dao != null) dao.close();
 		}

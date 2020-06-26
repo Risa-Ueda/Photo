@@ -9,24 +9,23 @@
 	<link rel="stylesheet" href="home.css">
 </head>
 <body>
-		<div class="top">
-			<p>HOME PAGE</p>
-				<form action="Home" method="post">	
-					<input class="submit" type="submit" name="button" value="image">
-					<input class="submit" type="submit" name="button" value="profile">
-					<input class="submit" type="submit" name="button" value="logout">
-					<p>ALL Posted</p>
-						<c:if test="${post !=null}">
-							<c:forEach var="i" items="${post}">
-								<div class="username">${i.username}</div>
-									<br>
-								<div class="imgname"><img src=${i.imgname} width=400 height=auto></div>
-								<div class="comment">comment:${i.comment}</div>
-								<input class="submit" type="submit" name="button" value="delete"><input type="hidden" name="id" value="${i.id}">
-									<br>
-							</c:forEach>
-						</c:if>
-				</form>
-		</div>
+	<div class="top">
+		<h3>HOME PAGE</h3>
+			<form action="Home" method="post"><!-- Home.javaに飛ぶ -->
+				<input class="submit" type="submit" name="button" value="image"><!-- buttonにimageの値を入れる -->
+				<input class="submit" type="submit" name="button" value="profile"><!-- buttonにprofileの値を入れる -->
+				<input class="submit" type="submit" name="button" value="logout"><!-- buttonにlogoutの値を入れる -->
+				<p>ALL Posted</p>
+					<c:if test="${post !=null}"><!-- もしpostがnullじゃない場合 -->
+						<c:forEach var="i" items="${post}"><!-- postの数だけ繰り返し -->
+							<div class="username">${i.username}</div><!-- usernameを表示 -->
+								<br>
+							<img src=${i.imgname} width=400 height=auto><!-- ファイル名を代入し画像を表示 -->
+							<div class="comment">comment:${i.comment}</div><!-- commentを表示 -->				
+								<br>
+						</c:forEach>
+					</c:if>
+			</form>
+	</div>
 </body>
 </html>

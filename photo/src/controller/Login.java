@@ -38,6 +38,7 @@ public class Login extends HttpServlet {
 	 */
 @SuppressWarnings("null")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		Dao dao = null;
 		boolean success = false;
 		String name = request.getParameter("name");//Daoからnameを取得
@@ -46,6 +47,7 @@ public class Login extends HttpServlet {
 		String button = request.getParameter("button");//buttonが押されたら
 		
 		if(button.equals("login")){//loginボタンが押されたら
+			
 			try {
 				dao = new Dao();
 				success = dao.getLoginInfo(name, pass);//successsの変数にnameとpassの値を代入、getLogininfoで取得
@@ -56,6 +58,7 @@ public class Login extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+			
 			if(success) {//Daoのnameとpass、入力されたnameとpassが一致した場合
 				ServletContext context = getServletContext();
 				RequestDispatcher dis = context.getRequestDispatcher("/home.jsp");//home.jspに飛ばす
@@ -69,6 +72,7 @@ public class Login extends HttpServlet {
 				request.setAttribute("message", "ログインに失敗しました"); //ログインに失敗しましたとメッセージ表示
 				doGet(request, response);
 			}
+			
 		} else if(button.equals("createaccount")){//createaccountが押されたら	
 			ServletContext context = getServletContext();
 			RequestDispatcher dis = context.getRequestDispatcher("/createaccount.jsp");//createaccount.jspにページを戻す

@@ -1,12 +1,13 @@
 @charset "UTF-8";
 
-div {
-	/*width: 31%;*/    /* 横幅を割合で指定 */
-    /*height: auto;*/
-    
+body{
+	background-image: url("texture.jpg");
+}
+
+div {    
     text-align: center;
     letter-spacing: 3px;
-    color: #710038;
+    color: #ffaa80;
 }
 
 img{
@@ -20,17 +21,16 @@ img{
   text-align    : center;      /* 文字位置   */
   cursor        : pointer;     /* カーソル   */
   padding       : 3px 3px;   /* 余白       */
-  background    : #ffbbdd;     /* 背景色     */
+  background    : #ffb3d9;     /* 背景色     */
   color         : #ffffff;     /* 文字色     */
   line-height   : 1em;         /* 1行の高さ  */
   transition    : .3s;         /* なめらか変化 */
   box-shadow    : 2px 2px 6px #666666;  /* 影の設定 */
-  border        : 2px solid #ffbbdd;    /* 枠の指定 */
+  border        : 2px solid #ffb3d9;    /* 枠の指定 */
 }
 
 .submit:hover {
   box-shadow    : none;        /* カーソル時の影消去 */
-  color         : #ffbbdd;     /* 背景色     */
+  color         : #ffb3d9;     /* 背景色     */
   background    : #ffffff;     /* 文字色     */
 }
-

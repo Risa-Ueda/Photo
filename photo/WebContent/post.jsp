@@ -9,22 +9,22 @@
 </head>
 <body>
 	<div>
-		<p>CREATE PAGE</p>
-			<form action="Post" method="post">
+		<h3>CREATE PAGE</h3>
+			<form action="Post" method="post"><!-- Post.javaに飛ぶ -->
 				<p>${message}</p>
-				<img src=${imgname} width=400 height=auto>
-				<div class="att"style="font-size: 13px;">画像が表示されない場合はページを更新してください</div>
+				<img src=${imgname} width=400 height=auto><!-- imgnameにファイル名を代入して画像を表示 -->
+				<div style="font-size: 13px;">画像が表示されない場合はページを更新してください</div>
 					<br>
-				<input type="text" name="comment" placeholder="add your comment!">
+				<input class="txt" type="text" name="comment" placeholder="add your comment!"><!-- commentを入力 -->
 					<br>
-				<input type="text" name="username" value="${name}" placeholder="username">
+				<input class="txt" type="text" name="username" value="${name}" placeholder="username"><!-- sessionで取得したnameを表示 -->
 					<br>
-				<input type="text" name="imagename" value="${imgname}" placeholder="imagename">
+				<input class="txt" type="text" name="imagename" value="${imgname}" placeholder="imagename"><!-- Image.javaで取得したimagenameを表示 -->
 					<br>
-				<input class="submit" type="submit" name="PostFinish" value="PostFinish">
+				<input class="submit" type="submit" name="PostFinish" value="PostFinish"><!-- buttonにPostFinishの値を入れる -->
 			</form>
-			<br>
-			<a class="submit" href="javascript:history.back();">return</a>
+				<br>
+		<a class="submit" href="javascript:history.back();">return</a><!-- 履歴のひとつ前のページに戻る -->
 	</div>
 </body>
 </html>

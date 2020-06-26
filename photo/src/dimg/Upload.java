@@ -30,6 +30,7 @@ public class Upload extends HttpServlet {
 		//アップロードされたファイルを保存するメソッド
 		request.setCharacterEncoding("utf-8");
 		String name = null;//画像名を取得する変数
+		
 		Part part = request.getPart("image");//Part型で画像のファイルを取得
         name = this.getFileName(part);//画像名を取得
         System.out.println(name);//画像名を表示

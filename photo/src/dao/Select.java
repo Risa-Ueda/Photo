@@ -19,6 +19,7 @@ public class Select implements DBAccess {
 	public void execute(HttpServletRequest request) throws SQLException { //サーブレットでも使っているリクエスト情報を引数で受ける
 		
 		Dao dao=null; //Dao型のdao変数を宣言
+		
 		try {
 			dao=new Dao(); //ｄaoクラスのインスタンス化
 			ArrayList<Dto>list=dao.getListAll(); //ｄaoクラスのgetListAllと同じ，データベースの各行の配列がここで返ってくる
@@ -28,9 +29,9 @@ public class Select implements DBAccess {
 			}else { //listが何もなかったら
 				request.setAttribute("message","まだデータがありません");
 			}
+			
 		}finally {
 			if(dao !=null)dao.close(); //daoがnullじゃなかったらデータベースとの通信を切断
 		}
-		
 	}
 }

@@ -27,22 +27,24 @@ public class Image extends HttpServlet {
 		boolean success = false;
 		Dao dao = null;
 		String imagename = request.getParameter("imagename");
-		try {
-			dao = new Dao();//Daoと接続
-			success = dao.getImagename(imagename);//DBにあるimagenameを取得
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		
+			try {
+				dao = new Dao();//Daoと接続
+				success = dao.getImagename(imagename);//DBにあるimagenameを取得
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		System.out.println(success);
-		if(success) {
-			request.setAttribute("imgname", imagename);//DBにあるimagenameをセット
-		}else {
+			if(success) {
+				request.setAttribute("imgname", imagename);//DBにあるimagenameをセット
+			}else {
+				ServletContext context = getServletContext();
+				RequestDispatcher dis = context.getRequestDispatcher("/image.jsp");//上手くいかなければimage.jspに戻す
+				dis.forward(request, response);
+			}
+			
 			ServletContext context = getServletContext();
-			RequestDispatcher dis = context.getRequestDispatcher("/image.jsp");//上手くいかなければimage.jspに戻す
+			RequestDispatcher dis = context.getRequestDispatcher("/post.jsp");//imagenameをセットできたらcreate.jspに飛ばす
 			dis.forward(request, response);
 		}
-		ServletContext context = getServletContext();
-		RequestDispatcher dis = context.getRequestDispatcher("/post.jsp");//imagenameをセットできたらcreate.jspに飛ばす
-		dis.forward(request, response);
-	}
 }

@@ -32,28 +32,26 @@ public class Post extends HttpServlet {
 		String username = request.getParameter("username");//create.jspからusernameを取得し変数usernameに代入
 		String imagename = request.getParameter("imagename");//create.jspからimagenameを取得し、変数imagenameに代入
 		String comment = request.getParameter("comment");//create.jspからcommentを取得ｓ、変数commentに代入
-		if(imagename != null) {//imagenameの値がDBに入っていた場合
+		
+		if(username == null || username.isEmpty() || imagename == null || imagename.isEmpty()) {//usernameとimagenameが入力されてない場合
+			request.setAttribute("message", "!ユーザ名、imagenameを入力してください");//!ユーザ名、imagenameを入力してくださいとメッセージを表示
+			ServletContext context = getServletContext();
+			RequestDispatcher dis = context.getRequestDispatcher("/post.jsp");//create.jspにページを戻す
+			dis.forward(request, response);
+		}else {
 			request.setAttribute("username", username);//usernameをusernameにセット
 			request.setAttribute("imgname", imagename);//imagenameをimagenameにセット
 			request.setAttribute("comment", comment);//commentにコメントをセット
 			Insert dbAccess = new Insert();//Insertメソッドで投稿
+			
 			try {
 				dbAccess.execute(request);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 			System.out.println("posted!");
-		}else if(username == null || username.isEmpty() || imagename == null || imagename.isEmpty()) {//usernameとimagenameが入力されてない場合
-			request.setAttribute("message", "!ユーザ名、imagenameを入力してください");//!ユーザ名、imagenameを入力してくださいとメッセージを表示
-			ServletContext context = getServletContext();
-			RequestDispatcher dis = context.getRequestDispatcher("/post.jsp");//create.jspにページを戻す
-			dis.forward(request, response);
-		}else {//それ以外
-			request.setAttribute("message", "!エラーが発生しました");
-			ServletContext context = getServletContext();
-			RequestDispatcher dis = context.getRequestDispatcher("/post.jsp");//create.jspに戻す
-			dis.forward(request, response);
 		}
+		
 		ServletContext context = getServletContext();
 		RequestDispatcher dis = context.getRequestDispatcher("/postfinish.jsp");//投稿されたらcreatefinish.jspに飛ばす
 		dis.forward(request, response);

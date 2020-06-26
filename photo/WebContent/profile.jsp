@@ -10,18 +10,17 @@
 </head>
 <body>
 	<div>
-		<p>Profile PAGE</p>
-		<form action="Profile" method="post">
-		<c:if test="${post !=null}">
-							<c:forEach var="i" items="${post}">
-								<div class="username">${i.username}</div>
-								<input class="submit" type="submit" name="username" value="${i.username}">
-									<br>
-							</c:forEach>
-						</c:if>
-					</form>
-					<br>
-					<a class="submit" href="javascript:history.back();">return</a>
+		<h3>Profile PAGE</h3>
+			<form action="Profile" method="post"><!-- Profile.javaに飛ぶ -->
+				<c:if test="${post !=null}"><!-- アカウントがnullじゃない場合 -->
+					<c:forEach var="i" items="${post}"><!-- アカウントがある分を繰り返す -->
+						<input class="submit" type="submit" name="username" value="${i.username}"><!-- usernameのボタンを表示 -->
+							<br><br>
+					</c:forEach>
+				</c:if>
+			</form>
+				<br>
+		<a class="submit" href="javascript:history.back();">return</a><!-- 履歴のひとつ前のページに戻る -->
 	</div>
 </body>
 </html>

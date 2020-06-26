@@ -9,19 +9,19 @@
 </head>
 <body>
 	<div>
-		<p>ACCOUNT CREATE PAGE</p>
-		<form action="Account" method="post">
+		<h3>ACCOUNT CREATE PAGE</h3>
+		<form action="Account" method="post"><!-- Account.javaに飛ぶ -->
 			<p>${message}</p>
-			<input type="text" name="username" placeholder="username">
+			<p>登録する名前とパスワードを入力してください</p>
 				<br>
-			<input type="text" name="password" placeholder="password">
-				<br>
-			<input class="submit" type="submit" name="button" value="account">
-			<input class="submit" type="submit" name="button" value="login">
-			</form>
-			<input type="submit" onclick="location.href=http://localhost:8080/photo/Login" value=”login”>
-			<a href="javascript:history.back();">return</a>
-		
+			<input type="text" name="username" placeholder="username"><!-- usernameを入力 -->
+				<br><br>
+			<input type="text" name="password" placeholder="password"><!-- passwordを入力 -->
+				<br><br>
+			<input class="submit" type="submit" name="button" value="create"><!-- buttonにcreateの値を入れる -->
+				<br><br>
+			<input class="submit" type="submit" name="button" value="login"><!-- buttonにloginの値を入れる -->
+		</form>
 	</div>
 </body>
 </html>

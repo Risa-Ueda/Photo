@@ -19,8 +19,10 @@ public class AcCreate implements DBAccess { //DBAccess
 		Dao dao = null;
 		String username = request.getParameter("username");//jspで入力されたusernameを取得
 		String password = (String) request.getAttribute("password");//jspで入力されたpasswordを取得
+
 		try {
 			dao = new Dao();//Daoクラスのコンストラクタでdbとつなげる
+		
 			if(dao.createAccount(username, password) > 0) {//inputとはユーザーがテキストをポストした回数
 				request.setAttribute("message", "完了!");
 				System.out.println("Insert success!");

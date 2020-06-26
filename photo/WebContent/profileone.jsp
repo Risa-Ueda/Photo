@@ -10,21 +10,22 @@
 </head>
 <body>
 	<div class="top">
-		<p>Profile PAGE</p>
-		<div>User:${username}</div>
-		<div>Post:${posts}</div>
-		<p>${message}</p>
-		<a class="submit" href="javascript:history.back();">return</a>
-				<c:if test="${post !=null}">
-							<c:forEach var="i" items="${post}">
-									<br>
-								<div class="imgname"><img src=${i.imgname} width=400 height=auto></div>
-								<div class="comment">comment:${i.comment}</div>
-								<input class="submit" type="submit" name="button" value="delete"><input type="hidden" name="id" value="${i.id}">
-								<div style="border-top: 2px solid #ffcce6;"></div>
-									<br>
-							</c:forEach>
-						</c:if>
+		<h3>${username} PAGE</h3>
+		<div>Posts:${posts}${message}</div><!-- post数を表示 -->
+		<a class="submit" href="javascript:history.back();">return</a><!-- 履歴のひとつ前のページに戻る -->
+			<c:if test="${post !=null}"><!-- postがnullじゃない場合 -->
+				<c:forEach var="i" items="${post}"><!-- postの分繰り返す -->
+						<br>
+					<div class="imgname"><img src=${i.imgname} width=400 height=auto></div><!-- imgnameにファイル名を代入し画像を表示 -->
+					<div class="comment">comment:${i.comment}</div><!-- commentを表示 -->
+						<form action="Home" method="post"><!-- Home.javaに飛ぶ -->
+							<input class="submit" type="submit" name="button" value="delete"><!-- buttonにdeleteの値を入れる -->
+							<input type="hidden" name="id" value="${i.id}"><!-- deleteの時に必要なidを取得するためにidを非表示で代入 -->
+						</form>
+					<div style="border-top: 2px solid #ffcce6;"></div>
+						<br>
+				</c:forEach>
+			</c:if>
 	</div>
 </body>
 </html>

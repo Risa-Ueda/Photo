@@ -11,17 +11,17 @@
 	<div>
 		<h1>Login Page</h1>
 		<p>${message}</p>　<!-- messageはログアアウトしましたになる -->
-			<form action="Login" method="post">
+			<form action="Login" method="post"><!-- Login.javaに飛ぶ -->
 				<label>NAME: </label>
-				<input type="text" name="name">
-				<br>
+				<input class="txt" type="text" name="name"><!-- ユーザーのnameを入力 -->
+					<br>
 				<label>PASS: </label>
-				<input type="password" name="pass">
-				<br>
-				<input class="submit" type="submit" name="button" value="login">	
-				<br>
-				<input class="submit" type="submit" name="button" value="createaccount">
-				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				<input class="txt" type="password" name="pass"><!-- ユーザーのpassを入力 -->
+					<br>
+				<input class="submit" type="submit" name="button" value="login"><!-- buttonにloginの値を入れる -->	
+					<br><br>
+				<input class="submit" type="submit" name="button" value="createaccount"><!-- buttonにcreateaccountの値を入れる -->
+					<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 			</form>
 	</div>
 </body>
