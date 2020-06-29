@@ -40,7 +40,7 @@ public class Profile extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			if(posts != 0) {//投稿数が0以上であれば
+			if(posts != 0) {//投稿数が0でなければ
 				request.setAttribute("username", username);//usernameをセット
 				request.setAttribute("posts", posts);//投稿数をセット
 				

@@ -17,8 +17,8 @@
 				<c:forEach var="i" items="${post}"><!-- postの分繰り返す -->
 						<br>
 					<div class="imgname"><img src=${i.imgname} width=400 height=auto></div><!-- imgnameにファイル名を代入し画像を表示 -->
-					<div class="comment">comment:${i.comment}</div><!-- commentを表示 -->
-						<form action="Home" method="post"><!-- Home.javaに飛ぶ -->
+					<div class="comment">comment:${i.comment}<c:if test="${empty i.comment}">No comment</c:if></div><!-- commentを表示 -->
+						<form action="Delete" method="post"><!-- Home.javaに飛ぶ -->
 							<input class="submit" type="submit" name="button" value="delete"><!-- buttonにdeleteの値を入れる -->
 							<input type="hidden" name="id" value="${i.id}"><!-- deleteの時に必要なidを取得するためにidを非表示で代入 -->
 						</form>

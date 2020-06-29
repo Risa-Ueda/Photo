@@ -34,21 +34,28 @@ public class Upload extends HttpServlet {
 		Part part = request.getPart("image");//Part型で画像のファイルを取得
         name = this.getFileName(part);//画像名を取得
         System.out.println(name);//画像名を表示
-        Path filePath = Paths.get("C:\\Users\\Risa\\eclipse-workspace\\photo\\WebContent" + File.separator + name);//WebContentにファイルを保存することを決める
-        InputStream in = part.getInputStream();//画像を取得
-        Files.copy(in, filePath, StandardCopyOption.REPLACE_EXISTING);//ファイルをコピーし画像を保存
-        request.setAttribute("imgname", name);//create.jspにファイル名を送る    
         
-        try {
-			Thread.sleep(3741);//()の間の時間が終わるまで次のページに遷移しない
-		} catch (InterruptedException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
-		}
+        if (name.isEmpty()) {
+        	request.setAttribute("message", "画像を選択してください");
+        	ServletContext context = getServletContext();
+    		RequestDispatcher dis = context.getRequestDispatcher("/image.jsp");//create.jspに飛ばす
+    		dis.forward(request, response);
+        }else {
+        	Path filePath = Paths.get("C:\\Users\\Risa\\eclipse-workspace\\photo\\WebContent" + File.separator + name);//WebContentにファイルを保存することを決める
+        	InputStream in = part.getInputStream();//画像を取得
+        	Files.copy(in, filePath, StandardCopyOption.REPLACE_EXISTING);//ファイルをコピーし画像を保存
+        	request.setAttribute("imgname", name);//create.jspにファイル名を送る    
         
-        ServletContext context = getServletContext();
-		RequestDispatcher dis = context.getRequestDispatcher("/post.jsp");//create.jspに飛ばす
-		dis.forward(request, response);
+        	try {
+        		Thread.sleep(3741);//()の間の時間が終わるまで次のページに遷移しない
+        	} catch (InterruptedException e) {
+        		e.printStackTrace();
+        	}
+        
+        	ServletContext context = getServletContext();
+        	RequestDispatcher dis = context.getRequestDispatcher("/post.jsp");//create.jspに飛ばす
+        	dis.forward(request, response);
+        }
 	}	
 	
 	private String getFileName(Part part) {

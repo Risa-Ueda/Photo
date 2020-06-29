@@ -21,7 +21,7 @@
 							<div class="username">${i.username}</div><!-- usernameを表示 -->
 								<br>
 							<img src=${i.imgname} width=400 height=auto><!-- ファイル名を代入し画像を表示 -->
-							<div class="comment">comment:${i.comment}</div><!-- commentを表示 -->				
+							<div class="comment">comment:${i.comment}<c:if test="${empty i.comment}">No comment</c:if></div><!-- commentを表示 -->				
 								<br>
 						</c:forEach>
 					</c:if>

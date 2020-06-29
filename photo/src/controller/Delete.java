@@ -14,39 +14,31 @@ import javax.servlet.http.HttpServletResponse;
 import dao.Dao;
 
 /**
- * Servlet implementation class Image
+ * Servlet implementation class Delete
  */
-@WebServlet("/Image")
-public class Image extends HttpServlet {
+@WebServlet("/Delete")
+public class Delete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		boolean success = false;
-		Dao dao = null;
-		String imagename = request.getParameter("imagename");
+		String button = request.getParameter("button");
 		
+		if(button.equals("delete")){//deleteのボタンが押されたら
+			Dao dao = null;
+			String id = request.getParameter("id");//idを取得
 			try {
-				dao = new Dao();//Daoと接続
-				success = dao.getImagename(imagename);//DBにあるimagenameを取得
+				dao = new Dao();//Daoに接続
+				dao.deletePost(id);//引数のidの投稿を削除
+				System.out.println(id);
 			} catch (SQLException e) {
 				e.printStackTrace();
-			}
-			System.out.println(success);
-			
-			if(success) {
-				request.setAttribute("imgname", imagename);//DBにあるimagenameをセット
-				
-			}else {
-				ServletContext context = getServletContext();
-				RequestDispatcher dis = context.getRequestDispatcher("/image.jsp");//上手くいかなければimage.jspに戻す
-				dis.forward(request, response);
-			}
-			
+			}	
 			ServletContext context = getServletContext();
-			RequestDispatcher dis = context.getRequestDispatcher("/post.jsp");//imagenameをセットできたらcreate.jspに飛ばす
+			RequestDispatcher dis = context.getRequestDispatcher("/delete.jsp");//delete.jspに飛ばす
 			dis.forward(request, response);
 		}
+	}
 }

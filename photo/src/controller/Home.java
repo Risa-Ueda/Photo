@@ -34,6 +34,7 @@ public class Home extends HttpServlet {
 				ServletContext context = getServletContext();
 				RequestDispatcher dis = context.getRequestDispatcher("/image.jsp");//image.jspに飛ばす
 				dis.forward(request, response);
+				
 			} else if(button.equals("profile")){//likeのボタンが押されたら
 				Dao dao = null;
 				ArrayList<Dto> alluser = null;//ArrayListをalluserで定義
@@ -49,6 +50,7 @@ public class Home extends HttpServlet {
 				ServletContext context = getServletContext();
 				RequestDispatcher dis = context.getRequestDispatcher("/profile.jsp");//profile.jspに飛ばす
 				dis.forward(request, response);
+				
 			} else if(button.equals("home")){//homeのボタンが押されたら
 				Dao dao = null;
 				ArrayList<Dto> postimage = null;//ArrayListをpostimageで定義
@@ -64,21 +66,7 @@ public class Home extends HttpServlet {
 				RequestDispatcher dis = context.getRequestDispatcher("/home.jsp");//home.jspに飛ばす
 				dis.forward(request, response);
 				
-			} else if(button.equals("delete")){//deleteのボタンが押されたら
-				Dao dao = null;
-				String id = request.getParameter("id");//idを取得
-				try {
-					dao = new Dao();//Daoに接続
-					dao.deletePost(id);//引数のidの投稿を削除
-					System.out.println(id);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}	
-				ServletContext context = getServletContext();
-				RequestDispatcher dis = context.getRequestDispatcher("/delete.jsp");//delete.jspに飛ばす
-				dis.forward(request, response);
-				
-			} else {
+			}else {
 				ServletContext context = getServletContext();
 				RequestDispatcher dis = context.getRequestDispatcher("/login.jsp");//login.jspに飛ばす
 				dis.forward(request, response);
