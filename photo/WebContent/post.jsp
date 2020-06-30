@@ -19,7 +19,7 @@
 					<br>
 				<input class="txt" type="text" readonly="readonly" name="username" value="${name}" placeholder="username"><!-- sessionで取得したnameを表示 -->
 					<br>
-				<input class="txt" type="text" name="imagename" value="${imgname}" placeholder="imagename"><!-- Image.javaで取得したimagenameを表示 -->
+				<input class="txt" type="text" readonly="readonly" name="imagename" value="${imgname}" placeholder="imagename"><!-- Image.javaで取得したimagenameを表示 -->
 					<br>
 				<input class="submit" type="submit" name="PostFinish" value="PostFinish"><!-- buttonにPostFinishの値を入れる -->
 			</form>

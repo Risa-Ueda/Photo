@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.Dao;
 import dto.Dto;
@@ -22,6 +23,20 @@ import dto.Dto;
 @WebServlet("/Home")
 public class Home extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8"); // セッションの取得(なければnullが返ってくる)
+		HttpSession session = request.getSession(false); // セッションの破棄
+		if(session != null) session.invalidate(); // ログイン失敗時、ログアウト時、不正操作時以外の場合
+		if(request.getAttribute("message") == null) request.setAttribute("message", "名前とパスワードを入力してください"); //messageがnullの場合
+		response.setContentType("text/html; charset=UTF-8");
+		ServletContext context = getServletContext();
+		RequestDispatcher dis = context.getRequestDispatcher("/login.jsp");//login.jspに飛ばす
+		dis.forward(request, response);
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

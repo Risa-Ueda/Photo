@@ -63,11 +63,13 @@ public class Login extends HttpServlet {
 				ServletContext context = getServletContext();
 				RequestDispatcher dis = context.getRequestDispatcher("/home.jsp");//home.jspに飛ばす
 				dis.forward(request, response);
+				
 			} else if(name == null || name.isEmpty() || pass == null || pass.isEmpty()) {//何も入力されなかった場合、一致しなかった場合
 				request.setAttribute("message", "!ユーザ名、パスワードを入力してください");//!ユーザ名、パスワードを入力してくださいとメッセージを表示
 				ServletContext context = getServletContext();
 				RequestDispatcher dis = context.getRequestDispatcher("/login.jsp");//login.jspにページを戻す
 				dis.forward(request, response);	
+				
 			}else {//それ以外
 				request.setAttribute("message", "ログインに失敗しました"); //ログインに失敗しましたとメッセージ表示
 				doGet(request, response);

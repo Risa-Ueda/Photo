@@ -10,7 +10,7 @@
 <body>
 	<div>
 		<h1>Login Page</h1>
-		<p>${message}</p>　<!-- messageはログアアウトしましたになる -->
+		<p>${message}</p>
 			<form action="Login" method="post"><!-- Login.javaに飛ぶ -->
 				<label>NAME: </label>
 				<input class="txt" type="text" name="name"><!-- ユーザーのnameを入力 -->
