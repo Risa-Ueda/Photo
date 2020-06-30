@@ -4,6 +4,11 @@ body{
 	background-image: url("texture.jpg");
 }
 
+p {
+	color: red;
+	font-weight: bold;
+}
+
 div {    
     text-align: center;
     letter-spacing: 3px;

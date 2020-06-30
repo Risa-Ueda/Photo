@@ -73,7 +73,7 @@ public class Login extends HttpServlet {
 				doGet(request, response);
 			}
 			
-		} else if(button.equals("createaccount")){//createaccount‚ª‰Ÿ‚³‚ê‚½‚ç	
+		} else if(button.equals("createaccount")){//createaccount‚ª‰Ÿ‚³‚ê‚½‚ç
 			ServletContext context = getServletContext();
 			RequestDispatcher dis = context.getRequestDispatcher("/createaccount.jsp");//createaccount.jsp‚Éƒy[ƒW‚ğ–ß‚·
 			dis.forward(request, response);

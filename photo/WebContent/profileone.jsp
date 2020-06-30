@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="top">
-		<h3>${username} PAGE</h3>
+		<h2>${username} PAGE</h2>
 		<div>Posts:${posts}${message}</div><!-- post数を表示 -->
 		<a class="submit" href="javascript:history.back();">return</a><!-- 履歴のひとつ前のページに戻る -->
 			<c:if test="${post !=null}"><!-- postがnullじゃない場合 -->

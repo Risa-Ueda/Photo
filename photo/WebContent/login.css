@@ -9,6 +9,11 @@ body {
 	height:100%;
 }
 
+p {
+	color: red;
+	font-weight: bold;
+}
+
 div {
 	text-align: center;
     letter-spacing: 3px;

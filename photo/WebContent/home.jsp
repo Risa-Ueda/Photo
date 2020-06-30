@@ -10,12 +10,12 @@
 </head>
 <body>
 	<div class="top">
-		<h3>HOME PAGE</h3>
+		<h2>HOME PAGE</h2>
 			<form action="Home" method="post"><!-- Home.javaに飛ぶ -->
 				<input class="submit" type="submit" name="button" value="image"><!-- buttonにimageの値を入れる -->
 				<input class="submit" type="submit" name="button" value="profile"><!-- buttonにprofileの値を入れる -->
 				<input class="submit" type="submit" name="button" value="logout"><!-- buttonにlogoutの値を入れる -->
-				<p>ALL Posted</p>
+				<h4>ALL Posted</h4>
 					<c:if test="${post !=null}"><!-- もしpostがnullじゃない場合 -->
 						<c:forEach var="i" items="${post}"><!-- postの数だけ繰り返し -->
 							<div class="username">${i.username}</div><!-- usernameを表示 -->

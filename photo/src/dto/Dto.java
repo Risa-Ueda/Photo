@@ -17,7 +17,7 @@ public class Dto { //Dtoが一行分のデータを持っている
 		
 	String imgname;//imgnameのゲッターとセッター
 	
-	String comment;
+	String comment;//commentのゲッターとセッター
 	
 	public int getId() {
 		return id;

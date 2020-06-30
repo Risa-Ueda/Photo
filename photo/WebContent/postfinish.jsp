@@ -10,15 +10,15 @@
 </head>
 <body>
 	<div>
-		<h3>POST FINISH PAGE</h3>
+		<h2>POST FINISH PAGE</h2>
 		<form action="Home" method="post"><!-- Home.javaに飛ぶ -->
-			<p>UserName</p>
-			<p>${username}</p><!-- post.jspで受け取ったusernameを表示 -->
-			<p>Posted Image</p>
+			<h4>UserName</h4>
+			<h5>${username}</h5><!-- post.jspで受け取ったusernameを表示 -->
+			<h4>Posted Image</h4>
 			<img src=${imgname} width=400 height=auto><!-- post.jspで受け取ったimgnameを代入し画像を表示 -->
 				<br>
-			<p>Comment</p>
-			<p>${comment}</p><!-- post.jspで受け取ったコメントを表示 -->
+			<h4>Comment</h4>
+			<h5>${comment}</h5><!-- post.jspで受け取ったコメントを表示 -->
 			<input class="submit" type="submit" name="button" value="home"><!-- buttonにhomeの値を入れる -->
 		</form>
 	</div>

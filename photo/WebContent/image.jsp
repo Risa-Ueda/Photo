@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div>
-		<h3>IMAGE PAGE</h3>
+		<h2>IMAGE PAGE</h2>
 			<form action="Image" method="post"><!-- Image.javaに飛ぶ -->
 				<img src=sky.jpg width=400 height=auto><!-- sky.jpgの画像表示 -->
 				<img src=pc.jpg width=400 height=auto><!-- pc.jpgの画像表示 -->

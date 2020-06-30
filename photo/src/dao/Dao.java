@@ -119,16 +119,16 @@ public class Dao {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		boolean success;
-		sql = "SELECT * from post where imgname = ?";
+		sql = "SELECT * from post where imgname = ?";//postテーブルからimgnameが同じものが存在するかどうか
 		ps = con.prepareStatement(sql);
-		ps.setString(1, imagename);
+		ps.setString(1, imagename);//image.jspで受け取った文字列をセット
 		try {
 			rs = ps.executeQuery();
-			success = rs.next();
+			success = rs.next();//結果を返す
 		}finally {
-			ps.close();
+			ps.close();//Daoを閉じる
 		}
-		return success;
+		return success;//結果を返す
 	}
 		
 	public int insertData(String username, String imgname, String comment) throws SQLException{
@@ -153,33 +153,18 @@ public class Dao {
 		PreparedStatement ps = null;//psSQLをどのデータベースにどのようなクエリを送るのか定義
 		int n = 0;//トライブロックの中にいると戻り値として認識されない
 		try {
-			String sql = "delete from post where id = ?";//?はユーザーが打ち込んだ値
+			String sql = "delete from post where id = ?";//?はユーザーが打ち込んだ値、受け取ったidから投稿を検索
 			ps = con.prepareStatement(sql);
 			ps.setString(1, id);//idの値をを取得
 			n = ps.executeUpdate();//sqlの実行文
 		}finally {
-			ps.close();
-		}
-		return n;//コード認証が成功した数を返す戻り式
-		}	
-	
-	public int deleteAcct(String id) throws SQLException {
-		//投稿を削除するメソッド
-		PreparedStatement ps = null;//psSQLをどのデータベースにどのようなクエリを送るのか定義
-		int n = 0;//トライブロックの中にいると戻り値として認識されない
-		try {
-			String sql = "delete from user where id = ?";//?はユーザーが打ち込んだ値
-			ps = con.prepareStatement(sql);
-			ps.setString(1, id);//idの値をを取得
-			n = ps.executeUpdate();//sqlの実行文
-		}finally {
-			ps.close();
+			ps.close();//閉じる
 		}
 		return n;//コード認証が成功した数を返す戻り式
 		}	
 	
 	public int countPost(String username) throws SQLException {
-		//投稿を削除するメソッド
+		//投稿を数えるメソッド
 		PreparedStatement ps = null;//psSQLをどのデータベースにどのようなクエリを送るのか定義
 		int n = 0;//トライブロックの中にいると戻り値として認識されない
 		try {
@@ -188,14 +173,14 @@ public class Dao {
 			ps.setString(1, username);//idの値をを取得
 			n = ps.executeUpdate();//sqlの実行文
 		}finally {
-			ps.close();
+			ps.close();//閉じる
 		}
 		return n;//コード認証が成功した数を返す戻り式
 	}
 	
 	public ArrayList<Dto> getUserAll() throws SQLException{
-		//DBに保存されているデータを全件取得するメソッド/メッセージdto.javaが一行分のデータを取得する
-		sql = "SELECT username from user;";//sql文を文字列として配置
+		//DBに保存されているユーザーを全件取得するメソッド、profile.jspで選択肢のボタンを表示
+		sql = "SELECT username from user;";//sql文を文字列として配置、userテーブルから全ユーザーを取得
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		ArrayList<Dto> list = null;
@@ -206,7 +191,7 @@ public class Dao {
 			Dto dto;
 			while(rs.next()) {//rs.nextによってカーソルが移動する
 				dto = new Dto();//dtoにインスタンス化したものを与え、メッセージｄｔoのインスタンス化をしている
-				dto.setusername(rs.getString("username"));
+				dto.setusername(rs.getString("username"));//ユーザーの名前のみセット
 				list.add(dto);//listに追加
 			}
 			rs.close();//SQL自体必要がなくなったためリソースを開放する
@@ -238,14 +223,14 @@ public class Dao {
 	}
 	
 	public ArrayList<Dto> getUserListAll(String username) throws SQLException{
-		//DBに保存されている一人のユーザーのデータを全件取得するメソッド//メッセージdto.javaが一行分のデータを取得する
+		//DBに保存されている一人のユーザーのデータを全件取得するメソッド
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		ArrayList<Dto> list = null;
-		sql = "SELECT * from post where username = ?;";//usernameを?に引き渡し
+		sql = "SELECT * from post where username = ?;";//usernameを?に引き渡し、その個人の投稿を取得
 		try {
 			ps = con.prepareStatement(sql);//sql文の実行準備
-			ps.setString(1, username);
+			ps.setString(1, username);//usernameをセット
 			rs = ps.executeQuery();//sql文実行
 			list = new ArrayList<>();//ArrayListをインスタンス化
 			Dto dto;

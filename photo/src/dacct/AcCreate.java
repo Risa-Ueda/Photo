@@ -23,11 +23,11 @@ public class AcCreate implements DBAccess { //DBAccess
 		try {
 			dao = new Dao();//Daoクラスのコンストラクタでdbとつなげる
 		
-			if(dao.createAccount(username, password) > 0) {//inputとはユーザーがテキストをポストした回数
-				request.setAttribute("message", "完了!");
+			if(dao.createAccount(username, password) > 0) {//成功した数が0以上であれば
+				request.setAttribute("message", "アカウント作成完了!");//messageにアカウント作成完了！をセット
 				System.out.println("Insert success!");
 			}else {//なんらかの理由によりポストが出来なかった場合
-				request.setAttribute("message", "失敗...");
+				request.setAttribute("message", "アカウント作成失敗...");//messageにアカウント作成失敗...をセット
 				System.out.println("Insert failed...");
 			}
 		}finally {

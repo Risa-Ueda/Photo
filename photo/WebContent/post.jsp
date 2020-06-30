@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div>
-		<h3>CREATE PAGE</h3>
+		<h2>CREATE PAGE</h2>
 			<form action="Post" method="post"><!-- Post.javaに飛ぶ -->
 				<p>${message}</p>
 				<img src=${imgname} width=400 height=auto><!-- imgnameにファイル名を代入して画像を表示 -->
@@ -17,7 +17,7 @@
 					<br>
 				<input class="txt" type="text" name="comment" placeholder="add your comment!"><!-- commentを入力 -->
 					<br>
-				<input class="txt" type="text" name="username" value="${name}" placeholder="username"><!-- sessionで取得したnameを表示 -->
+				<input class="txt" type="text" readonly="readonly" name="username" value="${name}" placeholder="username"><!-- sessionで取得したnameを表示 -->
 					<br>
 				<input class="txt" type="text" name="imagename" value="${imgname}" placeholder="imagename"><!-- Image.javaで取得したimagenameを表示 -->
 					<br>

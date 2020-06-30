@@ -40,6 +40,7 @@ public class Upload extends HttpServlet {
         	ServletContext context = getServletContext();
     		RequestDispatcher dis = context.getRequestDispatcher("/image.jsp");//create.jspに飛ばす
     		dis.forward(request, response);
+    		
         }else {
         	Path filePath = Paths.get("C:\\Users\\Risa\\eclipse-workspace\\photo\\WebContent" + File.separator + name);//WebContentにファイルを保存することを決める
         	InputStream in = part.getInputStream();//画像を取得
@@ -62,6 +63,7 @@ public class Upload extends HttpServlet {
 		//画像名を取得するメソッド
         String name = null;//nameに画像名を取得する変数
         for (String dispotion : part.getHeader("Content-Disposition").split(";")) {
+        	
             if (dispotion.trim().startsWith("filename")) {
                 name = dispotion.substring(dispotion.indexOf("=") + 1).replace("\"", "").trim();
                 name = name.substring(name.lastIndexOf("\\") + 1);

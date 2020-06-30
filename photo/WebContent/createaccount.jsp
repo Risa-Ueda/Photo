@@ -9,10 +9,10 @@
 </head>
 <body>
 	<div>
-		<h3>ACCOUNT CREATE PAGE</h3>
+		<h2>ACCOUNT CREATE PAGE</h2>
 		<form action="Account" method="post"><!-- Account.javaに飛ぶ -->
 			<p>${message}</p>
-			<p>登録する名前とパスワードを入力してください</p>
+			<h6>登録する名前とパスワードを入力してください</h6>
 				<br>
 			<input type="text" name="username" placeholder="username"><!-- usernameを入力 -->
 				<br><br>

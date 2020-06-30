@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div>
-		<h3>Profile PAGE</h3>
+		<h2>Profile PAGE</h2>
 			<form action="Profile" method="post"><!-- Profile.javaに飛ぶ -->
 				<c:if test="${post !=null}"><!-- アカウントがnullじゃない場合 -->
 					<c:forEach var="i" items="${post}"><!-- アカウントがある分を繰り返す -->

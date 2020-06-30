@@ -37,6 +37,7 @@ public class Account extends HttpServlet {
 			ServletContext context = getServletContext();
 			RequestDispatcher dis = context.getRequestDispatcher("/login.jsp");//login.jspに飛ばす
 			dis.forward(request, response);
+			
 		}else if(button.equals("create")){//createのボタンが押されたら
 			
 			if(username == null || username.isEmpty() || password == null || password.isEmpty()) {//usernameとpasswordの中に値が入っていない場合
@@ -44,6 +45,7 @@ public class Account extends HttpServlet {
 				ServletContext context = getServletContext();
 				RequestDispatcher dis = context.getRequestDispatcher("/createaccount.jsp");//createaccount.jspにページを戻す
 				dis.forward(request, response);
+				
 			}else if(username != null || password != null) {//usernameとpasswordが入力されている場合
 				request.setAttribute("username", username);//usernameをusernameにセット
 				request.setAttribute("password", password);//passwordをpasswordにセット
@@ -55,18 +57,11 @@ public class Account extends HttpServlet {
 					e.printStackTrace();
 				}
 				System.out.println("Account created!");
-				
-		}else {//それ以外
-			request.setAttribute("message", "!エラーが発生しました");
-			ServletContext context = getServletContext();
-			RequestDispatcher dis = context.getRequestDispatcher("/login.jsp");//login.jspに戻す
-			dis.forward(request, response);
-		}
+			}
 			
 		ServletContext context = getServletContext();
 		RequestDispatcher dis = context.getRequestDispatcher("/createaccount.jsp");//投稿されたらcreateaccount.jspに飛ばす
 		dis.forward(request, response);
-		}
-		
+		}	
 	}
 }
